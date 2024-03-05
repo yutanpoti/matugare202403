@@ -40,7 +40,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:20, minZoom:10
-        }).fitBounds([[35.87823992814834,137.9261092089329],[35.89354607524595,137.96153197158498]]);
+        }).fitBounds([[35.87943073199689,137.93156246783485],[35.893313774613205,137.96369195776933]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -355,7 +355,6 @@
             style: style_tiban202308_select_7_0,
         });
         bounds_group.addLayer(layer_tiban202308_select_7);
-        map.addLayer(layer_tiban202308_select_7);
         function pop_R1matugare_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -526,28 +525,7 @@
                         <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['R1higai'] !== null ? autolinker.link(feature.properties['R1higai'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['L_jukou'] !== null ? autolinker.link(feature.properties['L_jukou'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['L_Area'] !== null ? autolinker.link(feature.properties['L_Area'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['L_DBH'] !== null ? autolinker.link(feature.properties['L_DBH'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['L_zaiseki'] !== null ? autolinker.link(feature.properties['L_zaiseki'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['L_chousa_date'] !== null ? autolinker.link(feature.properties['L_chousa_date'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['L_shori'] !== null ? autolinker.link(feature.properties['L_shori'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['L_bikou'] !== null ? autolinker.link(feature.properties['L_bikou'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -619,45 +597,8 @@
                         });
                     }
                 }
-                if (map.hasLayer(layer_R5matugare_mituhiro202403shori_10)) {
-                    if (map.getZoom() <= 17 && map.getZoom() >= 19) {
-                        layer_R5matugare_mituhiro202403shori_10.eachLayer(function (layer) {
-                            layer.openTooltip();
-                        });
-                    } else {
-                        layer_R5matugare_mituhiro202403shori_10.eachLayer(function (layer) {
-                            layer.closeTooltip();
-                        });
-                    }
-                }
         });
         setBounds();
-        var i = 0;
-        layer_R5matugare_mituhiro202403_9.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['ID'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS UI Gothic\', sans-serif;">' + layer.feature.properties['ID']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_R5matugare_mituhiro202403_9'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
-        var i = 0;
-        layer_R5matugare_mituhiro202403shori_10.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['ID'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS UI Gothic\', sans-serif;">' + layer.feature.properties['ID']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_R5matugare_mituhiro202403shori_10'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
                 if (map.hasLayer(layer_segyouhan_geojson_6)) {
                     if (map.getZoom() <= 16 && map.getZoom() >= 19) {
                         layer_segyouhan_geojson_6.eachLayer(function (layer) {
@@ -680,26 +621,15 @@
                         });
                     }
                 }
-                if (map.hasLayer(layer_R5matugare_mituhiro202403shori_10)) {
-                    if (map.getZoom() <= 17 && map.getZoom() >= 19) {
-                        layer_R5matugare_mituhiro202403shori_10.eachLayer(function (layer) {
-                            layer.openTooltip();
-                        });
-                    } else {
-                        layer_R5matugare_mituhiro202403shori_10.eachLayer(function (layer) {
-                            layer.closeTooltip();
-                        });
-                    }
-                }
-        resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9,layer_R5matugare_mituhiro202403shori_10]);
+        resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9]);
         map.on("zoomend", function(){
-            resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9,layer_R5matugare_mituhiro202403shori_10]);
+            resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9,layer_R5matugare_mituhiro202403shori_10]);
+            resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9,layer_R5matugare_mituhiro202403shori_10]);
+            resetLabels([layer_segyouhan_geojson_6,layer_tiban202308_select_7,layer_R5matugare_mituhiro202403_9]);
         });
         </script>
     </body>
